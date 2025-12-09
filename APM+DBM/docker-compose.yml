@@ -3,7 +3,7 @@ services:
     image: gcr.io/datadoghq/agent:latest
     container_name: datadog-agent
     environment:
-      - DD_API_KEY=3bd870e883345981c54801883050632a
+      - DD_API_KEY=API-KEY
       - DD_SITE=datadoghq.com
       - DD_APM_ENABLED=true
       - DD_DBM_ENABLED=true
@@ -26,7 +26,7 @@ services:
       - POSTGRES_USER=dduser
       - POSTGRES_PASSWORD=ddpass
       - POSTGRES_DB=demo
-    # 👇 IMPORTANT: this `command` is under *db*, not under `services`
+    # IMPORTANT: this `command` is under *db*, not under `services`
     command: ["postgres", "-c", "shared_preload_libraries=pg_stat_statements"]
     ports:
       - "5432:5432"
