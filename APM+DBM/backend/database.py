@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine, text
 
-# 👇 This MUST be Postgres now, not sqlite
+# This is Postgres now, not sqlite
 DATABASE_URL = "postgresql+psycopg2://dduser:ddpass@db:5432/demo"
 
 engine = create_engine(DATABASE_URL, future=True)
