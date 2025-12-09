@@ -27,10 +27,10 @@ async def create_item(item: Item):
 
 @app.get("/data")
 async def fetch_data():
-    # 1️⃣ Database query
+    # Database query
     db_items = get_items()
 
-    # 2️⃣ External API call with error handling
+    # External API call with error handling
     external_data = None
     external_error = None
 
