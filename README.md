@@ -1,6 +1,6 @@
 ## Overview
 
-This repository contains **Docker-based sandbox environments** for:
+This repository contains **Docker-based sandbox environments and customer use-cases replication steps** for:
 - **Basic setup and configuration scenarios**
 - **Customer use-case and issue replication**
 
