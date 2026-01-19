@@ -1,8 +1,8 @@
 ## Overview
 
-This repository contains **Docker-based sandbox environments and customer use-cases replication steps** for:
-- **Basic setup and configuration scenarios**
-- **Customer use-case and issue replication**
+This repository contains **Docker-based sandbox environments** and **customer use-case replication steps** for:
+- Basic setup and configuration scenarios
+- Customer-reported issues and behavior replication
 
 These sandboxes are used to quickly spin up controlled, containerized environments for testing, learning, and troubleshooting Datadog product behavior.
 
