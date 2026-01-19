@@ -14,7 +14,7 @@ These sandboxes are used to quickly spin up controlled, containerized environmen
 
 ## Prerequisites
 
-⚠️ **Docker is required**
+**Docker is required**
 
 All scenarios in this repository require **Docker / Docker Engine** (and Docker Compose where applicable) to run in a containerized environment.
 
