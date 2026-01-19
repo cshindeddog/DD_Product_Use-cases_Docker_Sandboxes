@@ -1,0 +1,74 @@
+services:
+  dd-agent:
+    image: datadog/agent:latest
+    container_name: dd-agent-ndm-lab
+    environment:
+      - DD_API_KEY=<DD-API-KEY>
+      - DD_SITE=${DD_SITE:-datadoghq.com}
+      - DD_LOG_LEVEL=INFO
+      - DD_HOSTNAME=ndm-lab-agent
+    volumes:
+      - ./snmp/conf.yaml:/etc/datadog-agent/conf.d/snmp.d/conf.yaml:ro
+      - ./snmp/profiles:/etc/datadog-agent/conf.d/snmp.d/profiles:ro
+    networks:
+      ndmnet:
+        ipv4_address: 172.28.0.10
+
+  snmp-router:
+    image: tandrup/snmpsim:latest
+    platform: linux/amd64
+    container_name: snmp-router
+    user: "0:0"
+    command:
+      - snmpsimd.py
+      - --process-user=nobody
+      - --process-group=nogroup
+      - --agent-udpv4-endpoint=0.0.0.0:1161
+      - --v2c-arch
+    volumes:
+      - ./devices/router:/usr/local/snmpsim/data:ro
+    networks:
+      ndmnet:
+        ipv4_address: 172.28.0.21
+
+  snmp-switch:
+    image: tandrup/snmpsim:latest
+    platform: linux/amd64
+    container_name: snmp-switch
+    user: "0:0"
+    command:
+      - snmpsimd.py
+      - --process-user=nobody
+      - --process-group=nogroup
+      - --agent-udpv4-endpoint=0.0.0.0:1161
+      - --v2c-arch
+    volumes:
+      - ./devices/switch:/usr/local/snmpsim/data:ro
+    networks:
+      ndmnet:
+        ipv4_address: 172.28.0.22
+
+  snmp-firewall:
+    image: tandrup/snmpsim:latest
+    platform: linux/amd64
+    container_name: snmp-firewall
+    user: "0:0"
+    command:
+      - snmpsimd.py
+      - --process-user=nobody
+      - --process-group=nogroup
+      - --agent-udpv4-endpoint=0.0.0.0:1161
+      - --v2c-arch
+    volumes:
+      - ./devices/firewall:/usr/local/snmpsim/data:ro
+    networks:
+      ndmnet:
+        ipv4_address: 172.28.0.23
+
+networks:
+  ndmnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+

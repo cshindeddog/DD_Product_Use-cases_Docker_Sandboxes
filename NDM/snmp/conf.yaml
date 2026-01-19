@@ -1,0 +1,26 @@
+init_config:
+  loader: core
+  use_device_id_as_hostname: true
+
+instances:
+  - ip_address: 172.28.0.21
+    port: 1161
+    community_string: router
+    tags:
+      - device_role:router
+      - lab:ndm
+
+  - ip_address: 172.28.0.22
+    port: 1161
+    community_string: switch
+    tags:
+      - device_role:switch
+      - lab:ndm
+
+  - ip_address: 172.28.0.23
+    port: 1161
+    community_string: firewall
+    tags:
+      - device_role:firewall
+      - lab:ndm
+
